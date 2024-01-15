@@ -5,14 +5,15 @@ import { ListResponseModel } from '../models/listResponseModel';
 import { Rental } from '../models/rental';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class RentalService {
   apiUrl = 'https://localhost:7273/api/';
 
-  constructor(private httpClient:HttpClient) { }
+  constructor(private httpClient: HttpClient) {}
 
-  getRental():Observable<ListResponseModel<Rental>>{
-      return this.httpClient.get<ListResponseModel<Rental>>(this.apiUrl+"rentals/getall")
+  getRentals(): Observable<ListResponseModel<Rental>> {
+    let newPath = this.apiUrl + 'rentals/getall';
+    return this.httpClient.get<ListResponseModel<Rental>>(newPath);
   }
 }

@@ -5,14 +5,17 @@ import { ListResponseModel } from '../models/listResponseModel';
 import { Customer } from '../models/customer';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CustomerService {
   apiUrl = 'https://localhost:7273/api/';
 
-  constructor(private httpClient:HttpClient) { }
+  constructor(private httpClient: HttpClient) {}
 
-  getCustomers():Observable<ListResponseModel<Customer>>{
-return this.httpClient.get<ListResponseModel<Customer>>(this.apiUrl+"customers/getall")
+  getCustomers(): Observable<ListResponseModel<Customer>> {
+    let newPath = this.apiUrl + 'customers/getall';
+    return this.httpClient.get<ListResponseModel<Customer>>(newPath);
   }
+
+  
 }
